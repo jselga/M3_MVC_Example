@@ -4,6 +4,8 @@
  */
 package selgajordi_uf5_pt1;
 
+import Controller.MainController;
+
 /**
  *
  * @author jordi
@@ -14,7 +16,7 @@ public class SelgaJordi_UF5_Pt1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        MainController mctl = new MainController();
     }
 
 }
