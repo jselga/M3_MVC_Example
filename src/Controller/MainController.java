@@ -116,4 +116,20 @@ public class MainController {
         I1.addAlumne(alumne9);
         return I1;
     }
+
+    public boolean addAlumne() {
+        System.out.println("El botó afegir ha arribat al controlador");
+        return false;
+    }
+
+    public boolean updateAlumne() {
+        System.out.println("El botó modificar ha arribat al controlador");
+        return false;
+    }
+
+    public boolean delAlumne() {
+        System.out.println("El botó eliminar ha arribat al controlador");
+        return false;
+    }
+
 }
