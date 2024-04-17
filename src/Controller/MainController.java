@@ -41,7 +41,22 @@ public class MainController {
     }
 
     private TableModel getAlumnesDataTable() {
-        DefaultTableModel tm = new DefaultTableModel();
+        DefaultTableModel tm = new DefaultTableModel() {
+            Class[] columnTypes = {Integer.class, String.class, String.class, String.class, Boolean.class, Double.class};
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return true;
+            }
+
+            @Override
+
+            public Class getColumnClass(int columnIndex) {
+
+                return columnTypes[columnIndex];
+            }
+
+        };
         tm.addColumn("Codi");
         tm.addColumn("Nom");
         tm.addColumn("Curs");
