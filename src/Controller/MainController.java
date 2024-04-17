@@ -9,6 +9,7 @@ import Model.Curs;
 import Model.Institut;
 import View.MainView;
 import java.util.Set;
+import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -64,7 +65,9 @@ public class MainController {
         tm.addColumn("Dual");
         tm.addColumn("Nota");
 
-        Set<Alumne> alumnes = ins.getAlumnes();
+        TreeSet<Alumne> alumnes = new TreeSet<>();
+        alumnes.addAll(ins.getAlumnes());
+
         for (Alumne alumne : alumnes) {
             Object[] row = new Object[6];
             row[0] = alumne.getCodi();
