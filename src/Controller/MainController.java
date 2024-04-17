@@ -9,6 +9,8 @@ import Model.Curs;
 import Model.Institut;
 import View.MainView;
 import java.util.Set;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -18,6 +20,8 @@ public class MainController {
 
     private MainView mainV;
     private Institut ins;
+//Inicialitza la vista principal, les dades del model, crida el mètode per mostrar les dades
+//    i fa visible la vista principal
 
     public MainController() {
         this.mainV = new MainView(this);
@@ -25,6 +29,7 @@ public class MainController {
         showAlumnes();
         this.mainV.setVisible(true);
     }
+// Obté una cadena a partir del les dades proporcionades per getAlumnes
 
     private String getAlumnesTxt() {
         String txt = "";
@@ -35,10 +40,38 @@ public class MainController {
         return txt;
     }
 
+    private TableModel getAlumnesDataTable() {
+        DefaultTableModel tm = new DefaultTableModel();
+        tm.addColumn("Codi");
+        tm.addColumn("Nom");
+        tm.addColumn("Curs");
+        tm.addColumn("Accés");
+        tm.addColumn("Dual");
+        tm.addColumn("Nota");
+
+        Set<Alumne> alumnes = ins.getAlumnes();
+        for (Alumne alumne : alumnes) {
+            Object[] row = new Object[6];
+            row[0] = alumne.getCodi();
+            row[1] = alumne.getNom();
+            row[2] = alumne.getCurs().getNom();
+            row[3] = alumne.getAccess();
+            row[4] = alumne.isDual();
+            row[5] = alumne.getNotaA();
+            tm.addRow(row);
+        }
+        return tm;
+    }
+// Mostra les dades a la vista principal
+
     public void showAlumnes() {
         String txt = this.getAlumnesTxt();
         mainV.setInfoTextArea(txt);
+        TableModel tm = this.getAlumnesDataTable();
+        mainV.setInfoTable(tm);
+
     }
+//Inicialitza dades de proves del model
 
     public Institut initData() {
         Institut I1 = new Institut(1, "Vallbona");

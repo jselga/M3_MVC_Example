@@ -5,6 +5,7 @@
 package View;
 
 import Controller.MainController;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -24,6 +25,11 @@ public class MainView extends javax.swing.JFrame {
 
     public void setInfoTextArea(String txt) {
         jTextArea1.setText(txt);
+    }
+
+    public void setInfoTable(TableModel tm) {
+        jTable1.setModel(tm);
+
     }
 
     /**
