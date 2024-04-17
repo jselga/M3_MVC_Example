@@ -7,6 +7,7 @@ package Controller;
 import Model.Alumne;
 import Model.Curs;
 import Model.Institut;
+import View.AddView;
 import View.MainView;
 import java.util.Set;
 import java.util.TreeSet;
@@ -21,6 +22,7 @@ public class MainController {
 
     private MainView mainV;
     private Institut ins;
+    private AddView addView;
 //Inicialitza la vista principal, les dades del model, crida el mètode per mostrar les dades
 //    i fa visible la vista principal
 
@@ -120,8 +122,14 @@ public class MainController {
         return I1;
     }
 
-    public boolean addAlumne() {
+    public void addAlumneView() {
         System.out.println("El botó afegir ha arribat al controlador");
+        addView = new AddView(mainV, true, this);
+        addView.setVisible(true);
+    }
+
+    public boolean addAlumne() {
+//        System.out.println("El botó afegir ha arribat al controlador");
         return false;
     }
 
